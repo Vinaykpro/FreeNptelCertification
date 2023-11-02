@@ -159,8 +159,8 @@
       html2pdf().from(content).set({ 
         margin: 10, 
         filename: 'Nptel Certificate by Vinaykpro.pdf', 
-        image: { type: 'jpeg', quality: 0.98 }, 
-        html2canvas: { scale: 0.5 }, 
+        image: { type: 'jpeg', quality: 2 }, 
+        html2canvas: { scale: 1 }, 
         jsPDF: { unit: 'mm', format: 'a4', orientation: 'landscape' }
       }).save();
     });
