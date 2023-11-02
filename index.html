@@ -157,7 +157,7 @@
     document.getElementById('downloadbutton').addEventListener('click', function () {
       const content = document.getElementById('nptelCertificateByVinaykpro');
       html2pdf().from(content).set({ 
-        margin: 10, 
+        margin: 0, 
         filename: 'Nptel Certificate by Vinaykpro.pdf', 
         image: { type: 'jpeg', quality: 2 }, 
         html2canvas: { scale: 1 }, 
