@@ -153,24 +153,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script type="text/javascript">
-      window.onload = function() {
-        // document.getElementById('downloadbutton').addEventListener('click', function () {
-        //   var doc = new jsPDF();
-        //   var content = document.getElementById('nptelCertificateByVinaykpro');
-        //   doc.fromHTML(content, 0, 0);
-        //   doc.save("Nptel Certificate by Vinaykpro.pdf");
-        //   });
+  window.onload = function() {
+    document.getElementById('downloadbutton').addEventListener('click', function () {
+      const content = document.getElementById('nptelCertificateByVinaykpro');
+      html2pdf().from(content).set({ 
+        margin: 0, 
+        filename: 'Nptel Certificate by Vinaykpro.pdf', 
+        image: { type: 'jpeg', quality: 0.98 }, 
+        html2canvas: { scale: 1 }, 
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+      }).save();
+    });
+  }
+</script>
 
-        // 2nd approach
-
-        document.getElementById('downloadbutton').addEventListener('click', function () {
-          const content = document.getElementById('nptelCertificateByVinaykpro');
-
-          html2pdf().from(content) .set({ margin: 0, filename: 'Nptel Certificate by Vinaykpro'', image: { type: 'jpeg', quality: 0.98 }, html2canvas: { scale: 1 }, jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }}).save();
-          
-        });
-      }
-    </script>
   </body>
 
 </html>
