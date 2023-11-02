@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Free Nptel Certification</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <style media="screen">
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      #bg {
+        width:100vw;
+      }
+
+      #dp {
+        position:absolute;
+        top:2.2vw;
+        right:3vw;
+        width:11vw;
+        height: 13vw;
+      }
+
+      p {
+        position: absolute;
+      }
+
+      .roman {
+        font-family: 'Times New Roman', Times, serif;
+        font-weight: bold;
+      }
+      .urw {
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+      }
+
+      #course {
+        font-size: 2.5vw;
+        top:26.5vw;
+        left:50vw;
+        transform:translateX(-50%);
+      }
+
+      #name {
+        font-size: 1.8vw;
+        top:19vw;
+        left:50vw;
+        transform:translateX(-50%);
+      }
+
+      #score {
+        font-size: 2.3vw;
+        top:33vw;
+        left: 57.5vw;
+      }
+
+      #asmts {
+        font-size: 2vw;
+        top:37.2vw;
+        left: 43.5vw;
+        width: 8.5vw;
+        text-align: center;
+      }
+
+      #exam {
+        font-size: 2vw;
+        top:37.2vw;
+        left: 68.4vw;
+        width: 8.6vw;
+        text-align: center;
+      }
+
+      #total {
+        font-size: 2vw;
+        top:42.2vw;
+        left: 65vw;
+        width: 8.6vw;
+      }
+
+      #duration {
+        font-size: 2vw;
+        top:50.6vw;
+        left:50vw;
+        font-weight: bold;
+        transform:translateX(-50%);
+      }
+
+      #weeks {
+        font-size: 1.8vw;
+        top:54vw;
+        left:50vw;
+        font-weight: bold;
+        transform:translateX(-50%);
+      }
+
+      #roll {
+        font-size: 1.6vw;
+        top:67.4vw;
+        color: #ffffff;
+        opacity: 0.9;
+        left:8.4vw;
+        font-weight: lighter;
+      }
+
+      #nptel_certificate_by_vinaykpro {
+        padding: 0;
+      }
+
+      /* body {
+        background-color: black;
+      } */
+      button {
+        margin-top: 2vw;
+        margin-bottom: 10vw;
+        font-size: 1.8vw;
+        position: relative;
+        text-decoration: none;
+        border:none;
+        outline:none;
+        padding:1vw;
+        border-radius: 1vw;
+        cursor: pointer;
+        background-color: #1d96e0;
+        color: white;
+        left:50vw;
+        font-weight: bold;
+        transform:translateX(-50%);
+      }
+
+
+    </style>
+    <script type="text/javascript">
+      window.onload = function() {
+        //var downloadbutton = document.getElementById("downloadbutton");
+        document.getElementById('downloadbutton').addEventListener('click', function () {
+          var doc = new jsPDF();
+          var content = document.getElementById('content');
+          doc.fromHTML(content, 10, 10);
+          var pdfData = doc.output('datauristring');
+          var pdfLink = document.getElementById('pdf-link');
+          pdfLink.href = pdfData;
+          pdfLink.download = 'document.pdf';
+          pdfLink.click();
+          });
+
+      }
+    </script>
+  </head>
+  <body>
+    <div id="nptel_certificate_by_vinaykpro">
+    <img id="bg" src="nptelbg.png" />
+    <img id="dp" src="test.jpeg" />
+    <p class="roman" id="course">Software Engineering</p>
+    <p class="urw" id="name">KURMA VINAY</p>
+    <p class="urw" id="score">100</p>
+    <p class="urw" id="asmts">25/25</p>
+    <p class="urw" id="exam">75/75</p>
+    <p class="urw" id="total">21924</p>
+    <p class="roman" id="duration">Jul-Oct 2023</p>
+    <p class="roman" id="weeks">(12 week course)</p>
+    <p class="urw" id="roll">NOC23CS122S838500388</p>
+    </div>
+    <button id="downloadbutton" type="button"> Download Certificate </button>
+    <a id="pdf-link" style="display: none;"></a>
+
+  </body>
+</html>
