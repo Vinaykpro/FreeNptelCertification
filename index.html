@@ -161,7 +161,7 @@
         filename: 'Nptel Certificate by Vinaykpro.pdf', 
         image: { type: 'jpeg', quality: 0.98 }, 
         html2canvas: { scale: 1 }, 
-        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        jsPDF: { unit: 'mm', format: [window.innerWidth, ((int)window.innerWidth*0.7178)], orientation: 'portrait' }
       }).save();
     });
   }
