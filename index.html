@@ -112,13 +112,13 @@
       button {
         margin-top: 2vw;
         margin-bottom: 10vw;
-        font-size: 1.8vw;
+        font-size: 3vw;
         position: relative;
         text-decoration: none;
         border:none;
         outline:none;
-        padding:1vw;
-        border-radius: 1vw;
+        padding:2vw;
+        border-radius: 1.5vw;
         cursor: pointer;
         background-color: #1d96e0;
         color: white;
@@ -129,22 +129,6 @@
 
 
     </style>
-    <script type="text/javascript">
-      window.onload = function() {
-        //var downloadbutton = document.getElementById("downloadbutton");
-        document.getElementById('downloadbutton').addEventListener('click', function () {
-          var doc = new jsPDF();
-          var content = document.getElementById('content');
-          doc.fromHTML(content, 10, 10);
-          var pdfData = doc.output('datauristring');
-          var pdfLink = document.getElementById('pdf-link');
-          pdfLink.href = pdfData;
-          pdfLink.download = 'document.pdf';
-          pdfLink.click();
-          });
-
-      }
-    </script>
   </head>
   <body>
     <div id="nptel_certificate_by_vinaykpro">
@@ -162,6 +146,24 @@
     </div>
     <button id="downloadbutton" type="button"> Download Certificate </button>
     <a id="pdf-link" style="display: none;"></a>
-
   </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+  <script type="text/javascript">
+    window.onload = function() {
+
+      //var downloadbutton = document.getElementById("downloadbutton");
+      document.getElementById('downloadbutton').addEventListener('click', function () {
+        alert("Download should start automaticallly, if not then this website is still under development");
+        var doc = new jsPDF();
+        var content = document.getElementById('nptel_certificate_by_vinaykpro');
+        doc.fromHTML(content, 10, 10);
+        var pdfData = doc.output('datauristring');
+        var pdfLink = document.getElementById('pdf-link');
+        pdfLink.href = pdfData;
+        pdfLink.download = 'document.pdf';
+        pdfLink.click();
+        });
+
+    }
+  </script>
 </html>
