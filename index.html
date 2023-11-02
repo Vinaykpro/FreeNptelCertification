@@ -166,13 +166,7 @@
         document.getElementById('downloadbutton').addEventListener('click', function () {
     const content = document.getElementById('nptelCertificateByVinaykpro');
 
-html2pdf().set({
-    margin: 0,
-    filename: 'Nptel Certificate by Vinaykpro.pdf''
-   }).from(content).save();
-
-
-
+html2pdf().from(content).save();
 
       }
     </script>
