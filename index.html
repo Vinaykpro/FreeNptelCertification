@@ -169,19 +169,13 @@
         document.getElementById('downloadbutton').addEventListener('click', function () {
     const content = document.getElementById('nptelCertificateByVinaykpro');
 
-    html2pdf()
-  .from(content)
-  .set({
+html2pdf().from(content).set({
     margin: 0,
     filename: 'Nptel Certificate by Vinaykpro'',
     image: { type: 'jpeg', quality: 0.98 },
     html2canvas: { scale: 1 },
     jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-  })
-  .outputPdf()
-  .then((pdf) => {
-    pdf.save();
-  });
+  }).save();
 
 
 
