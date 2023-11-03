@@ -167,8 +167,8 @@
     var page = document.getElementById('nptelCertificateByVinaykpro');
     //page.style.width = innerWidth+"px";
     //page.style.height = innerWidth*0.7178+"px";
-    var h = page.offsetHeight;
-    var w = page.offsetWidth;
+    var h = window.innerWidth*0.7178+"px";
+    var w = window.innerWidth+"px";
     document.getElementById('downloadbutton').addEventListener('click', function () {
       const content = document.getElementById('nptelCertificateByVinaykpro');
       html2pdf().from(content).set({ 
