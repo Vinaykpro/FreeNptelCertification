@@ -155,6 +155,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script>
   window.onload = function() {
+    var page = document.getElementById('nptelCertificateByVinaykpro');
+    page.style.width = innerWidth+"px";
+    page.style.height = innerWidth*0.7178+"px";
     document.getElementById('downloadbutton').addEventListener('click', function () {
       const content = document.getElementById('nptelCertificateByVinaykpro');
       html2pdf().from(content).set({ 
