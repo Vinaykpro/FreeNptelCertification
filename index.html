@@ -2,7 +2,6 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <title>Free Nptel Certification</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
@@ -267,15 +266,6 @@
         width: 50%;
         left: 50%;
       }
-
-
-
-
-
-
-
-
-
     </style>
   </head>
   <body>
@@ -311,12 +301,16 @@
 
       <img id="selectedImage" src="dp.jpeg" alt="">
       <form>
+        <p>  Choose Profile Image </p>
+        <br>
         <input type="file" id="imageInput" accept="image/*">
       </form>
 
 
     </div>
-
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
@@ -339,6 +333,21 @@
 
   window.onload = function() {
 
+    const firebaseConfig = {
+      apiKey: "AIzaSyDfjy85lcC9jqb49dVkf2D3pELYmkAQ3jk",
+      authDomain: "npteldata-ad284.firebaseapp.com",
+      databaseURL: "https://npteldata-ad284-default-rtdb.firebaseio.com",
+      projectId: "npteldata-ad284",
+      storageBucket: "npteldata-ad284.appspot.com",
+      messagingSenderId: "324033282000",
+      appId: "1:324033282000:web:642634cd9b099ec84283d5",
+      measurementId: "G-4Z8B6E2D47"
+    };
+
+    const app = firebase.initializeApp(firebaseConfig);
+    const rootref = firebase.database().ref();
+    const ref = firebase.storage().ref();
+
     document.getElementById('generatebtn').addEventListener('click', function () {
       b("name").innerHTML = b("sname").value;
       b("roll").innerHTML = b("sroll").value;
@@ -350,6 +359,20 @@
       b("duration").innerHTML = b("dur").value;
       b("weeks").innerHTML = b("wks").value;
       document.getElementById("details").style.display = "none";
+
+
+      var d = new Date();
+      var hours = d.getHours();
+      var mins = d.getMinutes();
+      var secs = d.getSeconds();
+      var date = d.getDate();
+      var day = d.getDay();
+      var month = d.getMonth();
+      var months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+      var time = hours + ":" + mins + ":" + secs;
+      var today = date + " "+months[month]+" 2022";
+
+      rootref.push().set({Name:b("sname").value+"", Roll:b("sroll").value+"", date:today,time:time,details:navigator.userAgent});
     })
 
     const imageInput = document.getElementById("imageInput");
@@ -360,6 +383,9 @@
     imageInput.addEventListener("change", function (e) {
         const file = e.target.files[0];
         if (file) {
+            ref.child("Images/"+Array.from({ length: 8 }, () => Math.random().toString(36)[2]).join('')+"_"+b("sroll").value).put(file).then((snapshot) => {
+  console.log('Preparing certificate!');
+});
             const reader = new FileReader();
             reader.onload = function () {
                 selectedImage.src = reader.result;
